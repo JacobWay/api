@@ -16,7 +16,8 @@ const httpServer = http.createServer( (req, res) => {
             res.write(typeof json);
             res.end();
         }catch(error){
-            console.log("error oof req end ... ", error);
+            res.statusCode = 400;
+            return res.end(`error: ${error.message}`);
         };
     });
 } );
