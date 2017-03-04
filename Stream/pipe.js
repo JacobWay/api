@@ -1,4 +1,4 @@
-/*
+/**
  * src <stream.Readable> source stream that is piping to this writable.
  *
  * Build a readable, writable stream.
@@ -28,7 +28,7 @@ class MyReadable extends Readable{
 }
 
 const myReadable = new MyReadable();
-myReadable.read();
+//myReadable.read();
 
 const Writable = require("stream").Writable;
 
@@ -38,6 +38,7 @@ class MyWritable extends Writable{
     }
 
     _write(chunk, encoding, callback){
+        encoding = "utf8";
         console.log("write in MyWritable ... ", chunk);
     }
 }
@@ -48,7 +49,7 @@ myWritable.on("pipe", (src) => {
     //console.error("src ... ", src);
     //console.error("myReable ... ", myReadable);
     console.error("There is data stream piping");
-    assert.equal(src, myReadable);
+    //assert.equal(src, myReadable);
 });
 
 myReadable.pipe(myWritable);
