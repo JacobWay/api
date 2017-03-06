@@ -8,7 +8,7 @@ const stream = new MyWritable();
 
 function write(data, cb){
     if(!stream.write(data)){
-        steam.once("drain", cb);
+        stream.once("drain", cb);
     }else{
         process.nextTick(cb);
     }
